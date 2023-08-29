@@ -6,6 +6,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+import router from "./router";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -16,8 +17,17 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import NewsIndex from './components/news/NewsIndex.vue';
+import DataTable from 'datatables.net-vue3'
+import DataTablesLib from 'datatables.net';
 
+DataTable.use(DataTablesLib);
+
+app.component('example-component', ExampleComponent);
+app.component('news-index', NewsIndex);
+app.component('datatable', DataTable)
+
+app.use(router);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

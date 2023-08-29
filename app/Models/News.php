@@ -13,6 +13,6 @@ class News extends Model
         'title',
         'link',
         'points',
-        'posted_at',
+        'date_created',
     ];
 }

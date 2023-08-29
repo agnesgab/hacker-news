@@ -41,14 +41,14 @@ class HackerNewsScraper extends Command
 
         // Filtering title, link, points and time posted
         $crawler->filter('.athing')->each(function ($node) {
-            $title = $node->filter('.titleline')->text('Title');
+            $title = $node->filter('.titleline a')->text('Title');
             $link = $node->filter('.titleline a')->attr('href');
             $points = filter_var($node->nextAll()->filter('.subline > .score')->text(0), FILTER_SANITIZE_NUMBER_INT);
-            $postedAt = $node->nextAll()->filter('.subline > .age')->attr('title');
+            $datetimeCreated = $node->nextAll()->filter('.subline > .age')->attr('title');
 
             News::updateOrCreate(
                 ['link' => $link],
-                ['title' => $title, 'posted_at' => $postedAt, 'points' => $points],
+                ['title' => $title, 'date_created' => $datetimeCreated, 'points' => $points],
             );
 
             News::where('link', $link)->update(['points' => $points]);

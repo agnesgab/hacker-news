@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('link');
             $table->integer('points');
-            $table->dateTime('posted_at');
+            $table->date('date_created');
             $table->timestamps();
         });
     }
