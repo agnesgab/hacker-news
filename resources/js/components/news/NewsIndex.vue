@@ -58,7 +58,7 @@ export default {
                         item.title,
                         item.points,
                         item.date_created,
-                        `<a href="${item.link}">Open</a>`,
+                        `<a href="${item.link}" title="${item.link}">Open</a>`,
                         `<button @click='deleteNewsItem(${item.id})'>Delete</button>`, // Checkbox
                     ]);
                 })
