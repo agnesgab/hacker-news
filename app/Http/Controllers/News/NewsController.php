@@ -10,6 +10,6 @@ class NewsController extends Controller
     public function delete(string $id) {
         News::find($id)->delete();
 
-        return redirect('/');
+        return redirect('/news');
     }
 }

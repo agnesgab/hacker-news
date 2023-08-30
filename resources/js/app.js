@@ -16,15 +16,15 @@ import router from "./router";
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
 import NewsIndex from './components/news/NewsIndex.vue';
+import Home from './components/Home.vue';
 import DataTable from 'datatables.net-vue3'
 import DataTablesLib from 'datatables.net';
 
 DataTable.use(DataTablesLib);
 
-app.component('example-component', ExampleComponent);
 app.component('news-index', NewsIndex);
+app.component('home', Home);
 app.component('datatable', DataTable)
 
 app.use(router);

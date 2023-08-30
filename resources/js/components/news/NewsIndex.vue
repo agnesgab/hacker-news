@@ -71,7 +71,7 @@ export default {
         },
         generateDeleteButton(itemId)
         {
-            return `<a href="/news/delete/${itemId}" onclick="if (!confirm('Are you sure?')) {event.stopPropagation(); event.preventDefault();}">Delete</a>`;
+            return `<a href="/news/delete/${itemId}" onclick="if (!confirm('Are you sure?')) {event.stopPropagation(); event.preventDefault();}" class="btn btn-primary" >Delete</a>`;
         }
     },
 };
