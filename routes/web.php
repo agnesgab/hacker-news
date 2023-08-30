@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('home');
     })->name('home');
+
+    Route::get('/news/delete/{id}', [NewsController::class, 'delete']);
 });
 

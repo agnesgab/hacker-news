@@ -1,6 +1,7 @@
 <template>
        <div>
-           <DataTable :data="dataArray" :columns="columns" :options="options" class="table table-bordered" width="100%" />
+           <DataTable :data="data" :columns="columns" :options="options" class="table table-bordered" width="100%">
+           </DataTable>
        </div>
 </template>
 <script>
@@ -21,16 +22,15 @@ export default {
     data() {
         return {
             data: [],
-            dataArray: [],
         };
     },
     setup() {
         const columns = [
-            { title: "Title", width: "40%"},
-            { title: "Points", width: ""},
+            { title: "Title", width: "50%"},
+            { title: "Points", width: "10%"},
             { title: "Posted at", width: ""},
             { title: "Link", width: ""},
-            { title: ""},
+            { title: null},
         ];
 
         const options = {
@@ -54,21 +54,25 @@ export default {
             axios.get('/api/')
                 .then(response => {
                     this.data = response.data.data;
-                    this.dataArray = this.data.map(item => [
+                    this.data = this.data.map(item => [
                         item.title,
                         item.points,
                         item.date_created,
-                        `<a href="${item.link}" title="${item.link}">Open</a>`,
-                        `<button @click='deleteNewsItem(${item.id})'>Delete</button>`, // Checkbox
+                        this.generateLinkTag(item.link),
+                        this.generateDeleteButton(item.id)
                     ]);
                 })
                 .catch(error => {
                     console.error(error);
                 });
         },
-        deleteNewsItem(id) {
-            alert(id);
+        generateLinkTag(itemLink) {
+            return `<a href="${itemLink}" title="${itemLink}">Open</a>`;
         },
+        generateDeleteButton(itemId)
+        {
+            return `<a href="/news/delete/${itemId}" onclick="if (!confirm('Are you sure?')) {event.stopPropagation(); event.preventDefault();}">Delete</a>`;
+        }
     },
 };
 </script>

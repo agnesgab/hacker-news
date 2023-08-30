@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // Update 'news' table every minute
+        // Run command for updating 'news' table every minute
         $schedule->command('app:hacker-news-scraper')->everyMinute();
     }
 
