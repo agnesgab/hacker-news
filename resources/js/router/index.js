@@ -4,7 +4,7 @@ import NewsIndex from '../components/news/NewsIndex.vue'
 
 const routes = [
     {
-        path: '/',
+        path: '/news',
         name: 'news.index',
         component: NewsIndex
     }

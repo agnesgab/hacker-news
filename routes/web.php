@@ -17,10 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/', function () {
+   return view('home');
+})->name('home');
+
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return view('home');
-    })->name('home');
+    Route::get('/news', function () {
+        return view('news.news-index');
+    })->name('news.index');
 
     Route::get('/news/delete/{id}', [NewsController::class, 'delete']);
 });

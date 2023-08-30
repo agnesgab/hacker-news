@@ -51,7 +51,7 @@ export default {
     },
     methods: {
         fetchData() {
-            axios.get('/api/')
+            axios.get('/api/news')
                 .then(response => {
                     this.data = response.data.data;
                     this.data = this.data.map(item => [
