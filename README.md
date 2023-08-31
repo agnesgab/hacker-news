@@ -96,6 +96,6 @@ For running unit tests use:
 php artisan test
 ```
 
-## Best wishes
-![Hacker News Homepage](hn-homepage.png)
-![Hacker News News Page](hn-newspage.png)
+Sincerely, Agnese :relaxed:
+
+![Hacker News Homepage](hn-homepage.png) ![Hacker News News Page](hn-newspage.png)
